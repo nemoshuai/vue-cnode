@@ -14,6 +14,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-# vue-cnode
-# vue-cnode
-# vue-cnode
