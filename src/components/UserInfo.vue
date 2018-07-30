@@ -21,9 +21,8 @@
                 </div>
             </div>
         </div> -->
-        <side-bar :userInfo="userInfo"></side-bar>
         <div id="content">
-            <div class="panel">
+            <div class="panel panel-left">
                 <div class="header">
                     <router-link to="/">主页/</router-link>
                 </div>
@@ -40,27 +39,28 @@
                     </div>
                 </div>
             </div>
-            <div class="panel">
+            <div class="panel panel-left">
                 <div class="header">
                     <span>最近创建的话题</span>
                 </div>
                 <div class="inner">
-                        <topic-list :topicList="filtersRecentTopicList">
+                        <topic-list :topicList="filtersRecentTopicList" :replyFlag="false">
                                 <el-menu-item index="limitTopicNum+1"><a @click="limitTopicNum+=5">查看更多>></a></el-menu-item>
                             </topic-list>
                 </div>
             </div>
-            <div class="panel">
+            <div class="panel panel-left">
                 <div class="header">
                     <span>最近回复的话题</span>
                 </div>
                 <div class="inner">
-                        <topic-list :topicList="filtersRecentReplies">
+                        <topic-list :topicList="filtersRecentReplies" :replyFlag="false">
                                 <el-menu-item index="limitReplyNum+1"><a @click="limitReplyNum+=5">查看更多>></a></el-menu-item>
                         </topic-list>
                 </div>
             </div>
         </div>
+        <side-bar :userInfo="userInfo"></side-bar>
     </div>
 </template>
 
@@ -87,10 +87,14 @@ export default{
   },
   computed: {
     filtersRecentTopicList: function () {
-      return this.userInfo.recent_topics.slice(0, this.limitTopicNum)
+      if (this.userInfo.recent_topics != null) {
+        return this.userInfo.recent_topics.slice(0, this.limitTopicNum)
+      }
     },
     filtersRecentReplies: function () {
-      return this.userInfo.recent_replies.slice(0, this.limitReplyNum)
+      if (this.userInfo.recent_replies != null) {
+        return this.userInfo.recent_replies.slice(0, this.limitReplyNum)
+      }
     }
   },
   methods: {
@@ -99,6 +103,7 @@ export default{
         .then(res => {
           if (res.data.success) {
             this.userInfo = res.data.data
+            console.log(this.userInfo)
           }
         })
         .catch(err => {

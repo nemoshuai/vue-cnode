@@ -1,8 +1,7 @@
 <template>
     <div id="main">
-        <side-bar :userInfo="author"></side-bar>
         <div id="content">
-            <div class="panel">
+            <div class="panel panel-left">
                 <div class="header">
                     <span class="tag" :class="{'put_top':article.top}">{{getTab(article)}}</span>
                     <span class="title">{{article.title}}</span>
@@ -17,7 +16,7 @@
                     <div v-html="article.content"></div>
                 </div>
             </div>
-            <div class="panel">
+            <div class="panel panel-left">
               <div class="header">
                 <span>{{article.reply_count}} 回复</span>
               </div>
@@ -36,6 +35,7 @@
               </div>
             </div>
         </div>
+        <side-bar :userInfo="author"></side-bar>
     </div>
 </template>
 
@@ -116,5 +116,18 @@ export default{
     }
     .cell .attach{
       color: #08c !important;
+    }
+    .reply_style /deep/ p{
+      word-wrap: break-word;
+    }
+    .reply_style /deep/ img{
+      max-width: 33.33em;
+      max-height: 33.33em;
+    }
+    .reply_style /deep/ code{
+      display: inline-block;
+      width: 100%;
+      word-wrap: break-word;
+      overflow: hidden;
     }
 </style>

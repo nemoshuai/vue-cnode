@@ -2,19 +2,22 @@
     width: 90%;
     margin: 15px auto;
     line-height: 2em;
-}
-#sidebar{
-    width: 290px;
-    float: right;
+    // float: left;
+    overflow: hidden;
 }
 #content{
-    margin-right: 400px;
+    margin-right: 1.66em;
+    float: left;
 }
 .panel{
     background-color: #ffffff;
     margin-bottom: 13px;
     text-align: left;
     font-size:14px;
+}
+.panel-left{
+    width: 64.28em;
+    // float: left;
 }
 $tagColor: #80bd01;
 .put_top{

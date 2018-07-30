@@ -7,7 +7,7 @@
           </el-menu-item>
        </el-menu>
     </div>
-    <topic-list :topicList="topicList"></topic-list>
+    <topic-list :topicList="topicList" :replyFlag="true"></topic-list>
     </div>
 </template>
 
@@ -77,7 +77,7 @@ export default{
 <style lang="scss" scoped>
   $tagColor: #80bd01;
   .topic_list{
-    padding: 10px 100px;
+    padding: 10px 7.5%;
   }
   .head_tag{
     color: $tagColor;
@@ -85,5 +85,10 @@ export default{
   .cur_tag{
     background-color: $tagColor !important;
     color: #ffffff;
+  }
+  .list-header{
+    width: 100%;
+    height: 5.08em;
+    overflow: hidden;
   }
 </style>

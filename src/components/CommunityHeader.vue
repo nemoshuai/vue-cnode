@@ -27,9 +27,11 @@ export default{
 
 <style scoped>
 .navbar{
+    width: 100%;
+    height: 5.08em;
     background: #545c64;
+    overflow:hidden;
 }
-
 img{
     width: 61px;
     height: 30px;

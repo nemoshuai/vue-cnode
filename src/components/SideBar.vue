@@ -7,10 +7,10 @@
                     <div class="inner">
                         <div class="user_card">
                             <div>
-                               <router-link :to="{name:'userInfo',params:{name:'+userInfo.loginname+'}}" class="user_avatar">
+                               <router-link :to="{name:'userInfo',params:{name:userInfo.loginname}}" class="user_avatar">
                                    <img :src="userInfo.avatar_url" alt="" class="avatar_img">
                                 </router-link>
-                               <span><router-link :to="{name:'userInfo',params:{name:'+userInfo.loginname+'}}">{{userInfo.loginname}}</router-link></span>
+                               <span><router-link :to="{name:'userInfo',params:{name:userInfo.loginname}}">{{userInfo.loginname}}</router-link></span>
                                <div class="board">
                                   <div class="floor">
                                       <span>积分: {{userInfo.score}}</span>
@@ -34,7 +34,9 @@ export default{
 <style scoped>
     @import  '../style/base.scss';
     #sidebar{
-        width: 290px;
-        float: right;
+        /* width: 290px; */
+        width: 24.16em;
+        float: left;
+        overflow: hidden;
     }
 </style>

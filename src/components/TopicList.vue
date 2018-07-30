@@ -5,11 +5,11 @@
                     <router-link :to="{name:'userInfo',params:{name:item.author.loginname}}" class="user_avatar pull_left">
                         <img :src="item.author.avatar_url" alt="" class="avatar_img">
                     </router-link>
-                    <span class="reply_visit_count pull_left">{{item.reply_count}}/{{item.visit_count}}</span>
+                    <span class="reply_visit_count pull_left" v-if="replyFlag">{{item.reply_count}}/{{item.visit_count}}</span>
                     <div class="topic_title_wrapper">
                         <span class="tag" :class="{'put_top':item.top}" v-if="item.tab">{{getTab(item)}}</span>
                         <router-link :to="{name:'article',params:{topic_id:item.id,author:item.author.loginname}}" class="cell_title">
-                            {{item.title}}
+                            <span>{{item.title}}</span>
                         </router-link>
                    </div>
                   </div>
@@ -21,7 +21,7 @@
 <script>
 export default{
   name: 'TopicList',
-  props: ['topicList'],
+  props: ['topicList', 'replyFlag'],
   methods: {
     getTab: function (item) {
       if (item.top) {
@@ -51,4 +51,9 @@ export default{
     width: 70px;
     text-align: center;
   }
+ .topic_title_wrapper{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+ }
 </style>
